@@ -13,7 +13,7 @@ jobs:
     steps:
       # 步驟 1：把你的程式碼抓到這台虛擬機裡
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # 步驟 2：安裝 Python 環境
       - name: Set up Python
