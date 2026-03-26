@@ -1,39 +1,32 @@
 name: 每日抓取貓咪 API 資料
-
 on:
   workflow_dispatch: 
   schedule:
-    # 這裡的 '0 0 * * *' 代表每天 UTC 時間 00:00 (台灣時間早上 8:00) 執行
     - cron: '0 0 * * *'
 
 jobs:
   fetch_and_save_data:
-    runs-on: ubuntu-latest # 使用最新版的 Ubuntu 虛擬環境來跑程式
+    runs-on: ubuntu-latest 
 
     steps:
-      # 步驟 1：把你的程式碼抓到這台虛擬機裡
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 步驟 2：安裝 Python 環境
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9' # 指定 Python 版本
+          python-version: '3.9' 
 
-      # 步驟 3：安裝 requests 套件
       - name: Install dependencies
         run: pip install requests
 
-      # 步驟 4：執行我們剛剛寫的 Python 程式
       - name: Run Python script
         run: python code.py 
 
-      # 步驟 5：將程式產生的 JSON 和 CSV 檔案儲存起來，讓你可以在 GitHub 上下載
       - name: Upload output files
         uses: actions/upload-artifact@v4
         with:
-          name: cat-data-files # 下載時的壓縮檔名稱
+          name: cat-data-files
           path: |
             cats_data.json
             cats_data.csv
