@@ -2,7 +2,7 @@ import requests
 import json
 import csv
 
-url = 'https://api.thecatapi.com/v1/images/search?limit=5'
+url = 'https://api.thecatapi.com/v1/images/search'
 
 response = requests.get(url)
 
